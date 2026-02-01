@@ -1,2 +1,4 @@
-# arcs_anki_flashcards
-Anki flashcards to study the cards of the court and more
+# Arcs Anki flashcards
+
+Anki flashcards to study the effects of the court cards and others in the board
+game Arcs.
