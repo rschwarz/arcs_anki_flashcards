@@ -13,6 +13,8 @@ target.mkdir(exist_ok=True)
 # list of cards, by type
 guild_cards = [f"BC{i:02d}.png" for i in range(1, 25 + 1)]
 vox_cards = [f"BC{i:02d}.png" for i in range(26, 31 + 1)]
+lore_cards = [f"L{i:02d}.png" for i in range(1, 28 + 1)]
+leader_cards = [f"LEAD{i:02d}.png" for i in range(1, 16 + 1)]
 
 def resize_card(input_path: Path) -> None:
     img = Image.open(input_path)
@@ -41,7 +43,8 @@ def blur_card(input_path: Path, prop1, prop2):
 
 blur_guild_card = partial(blur_card, prop1=0.65, prop2=0.9)
 blur_vox_card = partial(blur_card, prop1=0.12, prop2=0.42)
-
+blur_lore_card = blur_guild_card
+blur_leader_card = partial(blur_card, prop1=0.59, prop2=0.87)
 
 # actually do the processing
 for gc in guild_cards:
@@ -50,3 +53,9 @@ for gc in guild_cards:
 for vc in vox_cards:
     resize_card(root / vc)
     blur_vox_card(target / vc)
+for lore in lore_cards:
+    resize_card(root / lore)
+    blur_lore_card(target / lore)
+for leader in leader_cards:
+    resize_card(root / leader)
+    blur_leader_card(target / leader)
